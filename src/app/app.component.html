@@ -1,1 +1,71 @@
 <h1>Carbon inline form teste</h1>
+<button (click)="addRow()">Adicionar vaga +</button>
+
+<cds-table-container title="Lista de Vagas">
+  <tbody>
+    <tr *ngFor="let item of vagas">
+      <td cdsTableCell>
+        <div class="cds--select ng-star-inserted">
+          <label class="cds--label ng-star-inserted">Selecione a unidade:</label>
+          <div class="cds--select-input__wrapper ng-star-inserted">
+            <svg
+              focusable="false"
+              preserveAspectRatio="xMidYMid meet"
+              style="will-change: transform;"
+              xmlns="http://www.w3.org/2000/svg"
+              class="cds--select__arrow"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              aria-hidden="true">
+              <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+            </svg>
+            <select
+              class="cds--select-input cds--select-input--md"
+              formControlName="unidadeConcurso"
+            >
+              <option value="default" disabled selected>Selecione o tipo de lotação...</option>
+              <option *ngFor='let unidade of unidadesDatasource'
+                      [ngValue]="unidade.id">{{ unidade.nome }}
+            </select>
+          </div>
+        </div>
+      </td>
+
+      <td cdsTableCell>
+        <div class="cds--select ng-star-inserted">
+          <label class="cds--label ng-star-inserted">Selecione a unidade:</label>
+          <div class="cds--select-input__wrapper ng-star-inserted">
+            <svg
+              focusable="false"
+              preserveAspectRatio="xMidYMid meet"
+              style="will-change: transform;"
+              xmlns="http://www.w3.org/2000/svg"
+              class="cds--select__arrow"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              aria-hidden="true">
+              <path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path>
+            </svg>
+            <select
+              class="cds--select-input cds--select-input--md"
+              formControlName="unidadeConcurso"
+            >
+              <option value="default" disabled selected>Selecione o tipo de lotação...</option>
+              <option *ngFor='let cargo of cargoDatasource'
+                      [ngValue]="cargo.id">{{ cargo.nome }}
+            </select>
+          </div>
+        </div>
+      </td>
+
+      <td cdsTableCell>
+        <button *ngIf="!item.editing" cdsButton (click)="editRow(item)">✏️ Editar</button>
+        <button *ngIf="item.editing" cdsButton (click)="saveRow(item)">💾 Salvar</button>
+        <button *ngIf="item.editing" cdsButton (click)="cancelEdit(item)">❌ Cancelar</button>
+      </td>
+    </tr>
+  </tbody>
+</cds-table-container>
+
